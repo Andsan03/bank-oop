@@ -19,6 +19,11 @@ public class CustomerReader {
         System.out.println("Apellidos");
         String surname = scanner.nextLine();
 
-
+        return new Customer(
+                nif,
+                name,
+                surname
+        );
     }
+
 }
