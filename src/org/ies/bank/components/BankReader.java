@@ -19,6 +19,7 @@ public class BankReader {
         String name = scanner.nextLine();
         System.out.println("¿Cuantas cuentas tiene el banco?");
         int size = scanner.nextInt();
+        scanner.nextLine();
 
         Accounts[] accounts = new Accounts[size];
 

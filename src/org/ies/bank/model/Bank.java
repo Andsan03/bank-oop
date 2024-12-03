@@ -2,6 +2,7 @@ package org.ies.bank.model;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Bank {
     private String name;
@@ -10,6 +11,65 @@ public class Bank {
     public Bank(String name, Accounts[] accounts) {
         this.name = name;
         this.accounts = accounts;
+    }
+
+    public void printAccounts(Scanner scanner) {
+        for (Accounts accounts : accounts) {
+            System.out.println("IBAN: " + accounts.getIban() + "saldo: " + accounts.getSaldo() + "NIF: " + accounts.getCustomer().getNif());
+        }
+    }
+
+    public void showAccount(String iban) {
+        for (var account : accounts) {
+            if (account.getIban().equals(iban)) {
+                showAccounts();
+            }
+        }
+    }
+    public void deposit(String iban, double money) {
+        for (var account : accounts) {
+            if (account.getIban().equals(iban)) {
+                account.deposit(money);
+            }
+        }
+    }
+
+    public void showCustomerAccounts(String nif) {
+        for (var account: accounts) {
+            if (account.getCustomer().getNif().equals(nif)) {
+                showAccounts();
+            }
+        }
+    }
+
+    public void showAccounts() {
+        for (var account : accounts) {
+            account.showInfo();
+        }
+    }
+    public Accounts findAccount (String iban) {
+        for (var account:accounts) {
+            if (account.getIban().equals(iban)) {
+                return account;
+            }
+        }
+        return null;
+    }
+    public int clientAccounts(String nif) {
+        int number = 0;
+        for (var account: accounts) {
+            if (account.getCustomer().getNif().equals(nif))
+                number ++;
+        }
+        return number;
+    }
+    public Customer returnInfo(String iban) {
+        for (var account: accounts) {
+            if (account.getIban().equals(iban)){
+                return account.getCustomer();
+            }
+        }
+        return null;
     }
 
     public String getName() {
