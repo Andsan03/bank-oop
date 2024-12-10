@@ -14,7 +14,7 @@ public class BankReader {
         this.accountsReader = accountsReader;
     }
     public Bank read () {
-        System.out.println("EScribe los datos del banco");
+        System.out.println("Escribe los datos del banco");
         System.out.println("Nombre");
         String name = scanner.nextLine();
         System.out.println("¿Cuantas cuentas tiene el banco?");

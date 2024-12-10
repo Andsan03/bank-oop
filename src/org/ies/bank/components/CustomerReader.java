@@ -11,7 +11,7 @@ public class CustomerReader {
         this.scanner = scanner;
     }
     public Customer read() {
-        System.out.println("Escribe losa datos del cliente");
+        System.out.println("Escribe los datos del cliente");
         System.out.println("NIF");
         String nif = scanner.nextLine();
         System.out.println("Nombre");

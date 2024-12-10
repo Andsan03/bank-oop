@@ -13,40 +13,47 @@ public class Bank {
         this.accounts = accounts;
     }
 
-    public void printAccounts(Scanner scanner) {
+    public void substract (String iban, double money) {
+        var accouunt = findAccount(iban);
+        if (accouunt != null) {
+
+        }
+    }
+
+    public void printAccounts() {
         for (Accounts accounts : accounts) {
-            System.out.println("IBAN: " + accounts.getIban() + "saldo: " + accounts.getSaldo() + "NIF: " + accounts.getCustomer().getNif());
+           accounts.showInfo();
         }
     }
 
     public void showAccount(String iban) {
         for (var account : accounts) {
             if (account.getIban().equals(iban)) {
-                showAccounts();
+                account.showInfo();
+            }else {
+                System.out.println("Cuenta no encontrada");
             }
         }
     }
     public void deposit(String iban, double money) {
-        for (var account : accounts) {
-            if (account.getIban().equals(iban)) {
-                account.deposit(money);
-            }
+        var account = findAccount(iban);
+        if (account != null) {
+            account.deposit(money);
+        }else {
+            System.out.println("Cuenta no encontrada");
         }
     }
 
     public void showCustomerAccounts(String nif) {
         for (var account: accounts) {
             if (account.getCustomer().getNif().equals(nif)) {
-                showAccounts();
+                account.showInfo();
+            } else {
+                System.out.println("Cuenta no encontrada");
             }
         }
     }
 
-    public void showAccounts() {
-        for (var account : accounts) {
-            account.showInfo();
-        }
-    }
     public Accounts findAccount (String iban) {
         for (var account:accounts) {
             if (account.getIban().equals(iban)) {
@@ -70,6 +77,18 @@ public class Bank {
             }
         }
         return null;
+    }
+    public void transfer (String iban1, String iban2, double amount) {
+        var account1 = findAccount(iban1);
+        var account2 = findAccount(iban2);
+        if (account1 != null && account2 != null) {
+            account1.withdraw(amount);
+            account2.deposit(amount);
+        } else if (account1) {
+
+        }
+
+
     }
 
     public String getName() {

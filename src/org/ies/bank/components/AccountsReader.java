@@ -19,6 +19,7 @@ public class AccountsReader {
         String iban = scanner.nextLine();
         System.out.println("Saldo");
         double saldo = scanner.nextDouble();
+        scanner.nextLine();
         System.out.println("Cliente");
         Customer customer = customerReader.read();
 

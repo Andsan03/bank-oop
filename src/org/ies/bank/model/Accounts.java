@@ -12,7 +12,9 @@ public class Accounts {
         this.saldo = saldo;
         this.customer = customer;
     }
-
+    public void withdraw (double money) {
+        saldo -= money;
+    }
 
     public void showInfo () {
         System.out.println(". IBAN: " + getIban() + ". Saldo: " + getSaldo() + ". Nif cliente: " + getCustomer().getNif());
