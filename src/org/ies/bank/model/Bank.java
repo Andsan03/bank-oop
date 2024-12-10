@@ -13,13 +13,6 @@ public class Bank {
         this.accounts = accounts;
     }
 
-    public void substract (String iban, double money) {
-        var accouunt = findAccount(iban);
-        if (accouunt != null) {
-
-        }
-    }
-
     public void printAccounts() {
         for (Accounts accounts : accounts) {
            accounts.showInfo();
@@ -82,13 +75,25 @@ public class Bank {
         var account1 = findAccount(iban1);
         var account2 = findAccount(iban2);
         if (account1 != null && account2 != null) {
-            account1.withdraw(amount);
-            account2.deposit(amount);
-        } else if (account1) {
-
+            if (account1.getSaldo() >= amount) {
+                withdraw(iban1, amount);
+                deposit(iban2, amount);
+            } else if (account1.getSaldo() < amount) {
+                System.out.println("Saldo insuficiente");
+            }
+        } else if (account1 == null) {
+            System.out.println("La cuenta " + iban1 + " no existe.");
+        } else {
+            System.out.println("La cuenta " + iban2 + " no existe.");
         }
-
-
+    }
+    public void withdraw (String iban, double money) {
+        var account = findAccount(iban);
+        if (account != null) {
+            account.withdraw(money);
+        }else {
+            System.out.println("Cuenta no encontrada");
+        }
     }
 
     public String getName() {

@@ -33,8 +33,8 @@ public class BankApp2 {
             System.out.println("La cuenta no existe");
         }
 
-        account.getCustomer();
-        account2.getCustomer();
+        account.showInfo();
+        account2.showInfo();
 
         bank.transfer(account.getIban(), account2.getIban(), 500);
     }
