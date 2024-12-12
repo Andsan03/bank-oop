@@ -12,6 +12,9 @@ public class Bank {
         this.name = name;
         this.accounts = accounts;
     }
+    public void showInfoBank () {
+        System.out.println("Nombre: " + getName() + " Cuentas: " + getAccounts() );
+    }
 
     public void printAccounts() {
         for (Accounts accounts : accounts) {
