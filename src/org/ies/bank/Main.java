@@ -1,18 +1,18 @@
 package org.ies.bank;
 
-import org.ies.bank.components.AccountsReader;
-import org.ies.bank.components.BankApp;
-import org.ies.bank.components.BankReader;
-import org.ies.bank.components.CustomerReader;
+import org.ies.bank.components.readers.scanner.ScannerAccountsReader;
+import org.ies.bank.components.readers.scanner.BankApp;
+import org.ies.bank.components.readers.scanner.ScannerBankReader;
+import org.ies.bank.components.readers.scanner.ScannerCustomerReader;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        CustomerReader customerReader = new CustomerReader(scanner);
-        AccountsReader accountsReader = new AccountsReader(scanner, customerReader);
-        BankReader bankReader = new BankReader(scanner,accountsReader);
+        ScannerCustomerReader customerReader = new ScannerCustomerReader(scanner);
+        ScannerAccountsReader accountsReader = new ScannerAccountsReader(scanner, customerReader);
+        ScannerBankReader bankReader = new ScannerBankReader(scanner,accountsReader);
         BankApp bankApp = new BankApp(scanner, bankReader);
 
         bankApp.run();
